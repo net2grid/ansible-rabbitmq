@@ -1,6 +1,9 @@
 ---
-
+# Leave this to false if binaries are already present or you're not on Debian
 rabbitmq_use_repository: no
+
+# Should we install the RabbitMQ admin script, regardless of new queues being created?
+rabbitmq_install_admin: yes
 
 rabbitmq_erlang_cookie: 1qa2ws3ed
 rabbitmq_ulimit_open_files: 1024

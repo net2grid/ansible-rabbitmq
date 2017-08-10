@@ -32,7 +32,8 @@
     src: rabbitmqadmin
     dest: /usr/local/bin
     mode: 0755
-  when: "{{ rabbitmq_instant_queues }}"
+  when: rabbitmq_install_admin or rabbitmq_instant_queues
+
 
 - name: Ensure required queues are present
   shell: rabbitmqadmin --username={{ item.0.user }} --password={{ item.0.password }} --vhost={{ item.0.vhost_name }} declare queue name={{ item.1 }} durable={{ item.0.durable }}
