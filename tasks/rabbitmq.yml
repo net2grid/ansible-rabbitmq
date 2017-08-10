@@ -34,14 +34,14 @@
     mode: 0755
   when: "{{ rabbitmq_instant_queues }}"
 
-- name: Ensure requared queues are present
+- name: Ensure required queues are present
   shell: rabbitmqadmin --username={{ item.0.user }} --password={{ item.0.password }} --vhost={{ item.0.vhost_name }} declare queue name={{ item.1 }} durable={{ item.0.durable }}
   with_subelements:
     - "{{ rabbitmq_vhosts_queues }}"
     - queues
   when: rabbitmq_instant_queues
 
-- name: Make a shovle for for queues
+- name: Make a shovel for for queues
   shell: rabbitmqctl set_parameter shovel {{ item.shovel_name }} '{{ item.shovel_json }}'
   with_items:
     - "{{ rabbitmq_shovels }}"
