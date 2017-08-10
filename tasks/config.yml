@@ -27,7 +27,7 @@
     dest: /usr/lib/rabbitmq/sbin
     state: link
 
-- name: Enable the plugins is installed
+- name: Enable RabbitMQ plugins
   rabbitmq_plugin:
     names: "{{ item }}"
     prefix: /usr/lib/rabbitmq
