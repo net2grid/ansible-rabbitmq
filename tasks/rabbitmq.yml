@@ -1,19 +1,19 @@
 ---
 # RabbitMQ user and vhost management
 
-- name: Ensure the users is removed
+- name: Ensure the users are removed
   rabbitmq_user:
     user: "{{ item }}"
     state: absent
   with_items: "{{ rabbitmq_users_removed }}"
 
-- name: Ensure the vhosts is present
+- name: Ensure the vhosts are present
   rabbitmq_vhost:
     name: "{{ item }}"
     state: present
   with_items: "{{ rabbitmq_vhosts }}"
 
-- name: Ensure the users is present
+- name: Ensure the users are present
   rabbitmq_user:
     user: "{{ item.user }}"
     password: "{{ item.password }}"
@@ -41,7 +41,7 @@
     - queues
   when: rabbitmq_instant_queues
 
-- name: Make a shovel for for queues
+- name: Make a shovel for queues
   shell: rabbitmqctl set_parameter shovel {{ item.shovel_name }} '{{ item.shovel_json }}'
   with_items:
     - "{{ rabbitmq_shovels }}"
