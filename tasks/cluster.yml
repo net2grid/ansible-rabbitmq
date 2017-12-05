@@ -1,5 +1,5 @@
 ---
-# Create Erlang distributed app
+# Create an Erlang distributed app
 
 - name: start rabbitmq server
   service:
