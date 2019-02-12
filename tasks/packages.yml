@@ -5,10 +5,8 @@
   apt:
     update_cache: yes
     force: yes
-    pkg: "{{ item }}"
+    pkg: ['rabbitmq-server']
     state: present
-  with_items:
-    - rabbitmq-server
 
 - name: customize logrotate rules
   template:
